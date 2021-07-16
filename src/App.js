@@ -51,33 +51,34 @@ class Formulario extends Component{
     }
   }
 
-  syncEmailCambios(emailC){
-    //console.log(emailC);
-    this.setState({
-      email: emailC //emailC puede llamarse email, lo hago asi para no confundirme
-    })
+  syncCambios(value,property){
+    let state = {};
+    state[property] = value;
+    this.setState(state);
   }
 
-  syncPasswordCambios(passC){
-    this.setState({
-      password: passC
-    })
+  submitForm = ()=>{
+    console.log(this.state);
   }
 
   render(){
     return (
       <form>
         <input 
-          onChange={ (ev)=>{ this.syncEmailCambios(ev.target.value) } }
+          onChange={ (ev)=>{ this.syncCambios(ev.target.value, 'email') } }
           type="email" 
           value={this.state.email} 
           placeholder="Email" />
         <input 
+          onChange={ (ev)=>{ this.syncCambios(ev.target.value, 'password') } }
           type="password" 
           value={this.state.password} 
           placeholder="*****" />
         <div>
-          <input type="submit" value="Iniciar sesión" />
+          <input 
+            onClick={ this.submitForm }
+            type="submit" 
+            value="Iniciar sesión" />
         </div>
       </form>
     );
