@@ -87,6 +87,31 @@ class Formulario extends Component{ //Trabajo con Formularios
   }
 }
 
+class Frutas extends Component{ //Colecciones
+  constructor(props){
+    super(props);
+    this.state = {
+      articulos: [
+        'Bananas',
+        'Manzanas',
+        'Naranjas'
+      ]
+    }
+  }
+
+  render(){
+    return (
+      <div>
+        {
+          this.state.articulos.map((titulo)=>{
+            return <p>{titulo}</p>
+          })
+        }
+      </div>
+    )
+  }
+}
+
 class Blog extends Component{ //Colecciones
   constructor(props){
     super(props);
@@ -97,6 +122,10 @@ class Blog extends Component{ //Colecciones
         'Naranjas'
       ]
     }
+  }
+
+  componentDidMount(){
+    console.log("Estoy listo!");
   }
 
   render(){
@@ -133,6 +162,10 @@ export default function App() {
       <p>----------------------------------------</p>
       <div>
         <Formulario />
+      </div>
+      <p>----------------------------------------</p>
+      <div>
+        <Frutas />
       </div>
       <p>----------------------------------------</p>
       <div>
