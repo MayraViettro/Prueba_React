@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 
+//Componentes Funcionales
 function A(props){
   return <p>Hola {props.nombre}</p>;
 }
@@ -13,13 +14,14 @@ function C(props){
   return props.children;
 }
 
+//Componentes de Clase
 class MiComponenteDeClase extends Component{
   render(){
     return <p>Hola soy de la clase</p>;
   }
 }
 
-class Contador extends Component{
+class Contador extends Component{ //Uso de State y Props
   constructor(props){
     super(props);
 
@@ -42,7 +44,7 @@ class Contador extends Component{
   }
 }
 
-class Formulario extends Component{
+class Formulario extends Component{ //Trabajo con Formularios
   constructor(props){
     super(props);
     this.state = {
@@ -85,6 +87,31 @@ class Formulario extends Component{
   }
 }
 
+class Blog extends Component{ //Colecciones
+  constructor(props){
+    super(props);
+    this.state = {
+      articulos: [
+        'Bananas',
+        'Manzanas',
+        'Naranjas'
+      ]
+    }
+  }
+
+  render(){
+    return (
+      <div>
+        {
+          this.state.articulos.map((titulo)=>{
+            return <p>{titulo}</p>
+          })
+        }
+      </div>
+    )
+  }
+}
+
 export default function App() {
   let nombre = "Ariel";
   return (
@@ -106,6 +133,10 @@ export default function App() {
       <p>----------------------------------------</p>
       <div>
         <Formulario />
+      </div>
+      <p>----------------------------------------</p>
+      <div>
+        <Blog />
       </div>
     </div>
   );
