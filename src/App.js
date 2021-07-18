@@ -112,7 +112,7 @@ class Frutas extends Component{ //Colecciones
   }
 }
 
-class Blog extends Component{ //Ajax y Colecciones
+class Blog extends Component{ //Ajax y Colecciones, Uso de Estilos
   constructor(props){
     super(props);
     this.state = {
@@ -145,7 +145,7 @@ class Blog extends Component{ //Ajax y Colecciones
       <div>
         {
           this.state.articulos.map((articulo)=>{
-            return <p>{articulo.title}</p>
+            return <div className="card" style={ { backgroundColor: 'red', color: 'yellow' } }><p>{articulo.title}</p></div>
           })
         }
       </div>
@@ -182,6 +182,10 @@ export default function App() {
       <p>----------------------------------------</p>
       <div>
         <Blog />
+      </div>
+      <p>----------------------------------------</p>
+      <div>
+        
       </div>
     </div>
   );
