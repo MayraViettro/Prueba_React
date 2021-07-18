@@ -1,6 +1,8 @@
 import React, { Component, useState } from "react";
 import "./style.css";
 
+import ContadorSeparado from './ContadorSeparado'; //Importo del otro archivo
+
 //Componentes Funcionales
 function A(props){
   return <p>Hola {props.nombre}</p>;
@@ -197,6 +199,10 @@ export default function App() {
       <p>----------------------------------------</p>
       <div>
         <ContadorFuncional />
+      </div>
+      <p>----------------------------------------</p>
+      <div>
+        <ContadorSeparado />
       </div>
     </div>
   );
