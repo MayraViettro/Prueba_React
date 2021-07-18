@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./style.css";
 
 //Componentes Funcionales
@@ -153,6 +153,17 @@ class Blog extends Component{ //Ajax y Colecciones, Uso de Estilos
   }
 }
 
+function ContadorFuncional(props){ //React Hooks, mas usos para function
+  const [contador, setContador] = useState(0); //Valor inicial, retorna arreglo con 2 datos (valor del estado y funcion para modificar estado)
+  //useState (y otros Hooks) solo puede ser usado en la "raiz" de la funcion
+  return (
+    <div>
+      <p>Conteo: {contador}</p>
+      <button onClick={ ()=> setContador(contador+1) }>Aumentar</button>
+    </div>
+  );
+}
+
 export default function App() {
   let nombre = "Ariel";
   return (
@@ -185,7 +196,7 @@ export default function App() {
       </div>
       <p>----------------------------------------</p>
       <div>
-        
+        <ContadorFuncional />
       </div>
     </div>
   );
