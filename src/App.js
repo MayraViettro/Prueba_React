@@ -112,28 +112,40 @@ class Frutas extends Component{ //Colecciones
   }
 }
 
-class Blog extends Component{ //Colecciones
+class Blog extends Component{ //Ajax y Colecciones
   constructor(props){
     super(props);
     this.state = {
-      articulos: [
-        'Bananas',
-        'Manzanas',
-        'Naranjas'
-      ]
-    }
+      articulos: []
+    };
   }
 
   componentDidMount(){
-    console.log("Estoy listo!");
+    let promesa = fetch('https://jsonplaceholder.typicode.com/posts');
+
+    promesa.then(response => response.json()).then(data=>{
+      this.setState({
+        articulos: data
+      })
+    })
+
+    /* OTRA FORMA DE ESCRIBIR MENOS SIMPLIFICADA:
+
+    promesa.then((response)=>{
+      response.json().then((data)=>{
+        console.log(data);
+      })
+    });
+
+    */
   }
 
   render(){
     return (
       <div>
         {
-          this.state.articulos.map((titulo)=>{
-            return <p>{titulo}</p>
+          this.state.articulos.map((articulo)=>{
+            return <p>{articulo.title}</p>
           })
         }
       </div>
